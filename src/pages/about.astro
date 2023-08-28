@@ -1,4 +1,6 @@
 ---
+import "../styles/global.css"
+
 const pageTitle = "About Me"
 
 const identity = {
@@ -18,6 +20,10 @@ const skillColor = "navy"
 const fontWeight = "bold"
 const textCase = "uppercase"
 ---
+<!-- the double dots (..) mean "go up one level in the directory hierarchy".  -->
+<!--When conflicting styles are defined both globally and in a page’s local <style> tag, the local styles should overwrite any global styles. (But, there can be other factors involved, so always visually inspect your site to make sure your styles are properly applied!)
+  If you want a style to be applied site-wide, you would choose to use a global.css file. However, if you want styles to apply to only the HTML content in a single .astro file, and not affect other elements on your site, you would choose a <style> tag. -->
+
 
 <html>
 
