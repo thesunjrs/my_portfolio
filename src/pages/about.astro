@@ -1,5 +1,7 @@
 ---
-import "../styles/global.css"
+import "../styles/global.css";
+import Navigation from "../components/Navigation.astro";
+import Footer from "../components/Footer.astro";
 
 const pageTitle = "About Me"
 
@@ -20,6 +22,7 @@ const skillColor = "navy"
 const fontWeight = "bold"
 const textCase = "uppercase"
 ---
+
 <!-- the double dots (..) mean "go up one level in the directory hierarchy".  -->
 <!--When conflicting styles are defined both globally and in a page’s local <style> tag, the local styles should overwrite any global styles. (But, there can be other factors involved, so always visually inspect your site to make sure your styles are properly applied!)
   If you want a style to be applied site-wide, you would choose to use a global.css file. However, if you want styles to apply to only the HTML content in a single .astro file, and not affect other elements on your site, you would choose a <style> tag. -->
@@ -82,5 +85,7 @@ const textCase = "uppercase"
   <p>This site will update as I complete more of the tutorial, so keep checking back and see how my journey is going!</p>
 
     <p></p>
-    </body>
+    
+  <Footer />
+  </body>
 </html>

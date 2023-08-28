@@ -1,12 +1,12 @@
 ---
-import "../styles/global.css"
+import "../styles/global.css";
+import Navigation from '../components/Navigation.astro';
+import Footer from '../components/Footer.astro';
 const pageTitle = "Blog"
 ---
 
 <html lang="en">
-    <a href="/">Home</a>
-    <a href="/about/">About</a>
-    <a href="/blog/">Blog</a>	
+    <Navigation />	
 
 <head>
 		<meta charset="utf-8" />
@@ -25,5 +25,7 @@ const pageTitle = "Blog"
         <li><a href="/posts/post-2">Post 2</a></li>
         <li><a href="/posts/post-3">Post 3</a></li>
     </ul>
+	
+	<Footer />
 	</body>
 </html>

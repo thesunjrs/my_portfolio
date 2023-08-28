@@ -1,16 +1,13 @@
 ---
-import "../styles/global.css"
-
+import "../styles/global.css";
+import Navigation from "../components/Navigation.astro"
 const pageTitle = "Home"
-
-
+import Footer from "../components/Footer.astro";
 ---
 
 <html lang="en">
 	
-		<a href="/">Home</a>
-        <a href="/about/">About</a>
-        <a href="/blog/">Blog</a>
+		<Navigation />
 <head>
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -21,6 +18,6 @@ const pageTitle = "Home"
 	<body>
 	<h1>{pageTitle}</h1>
 	
-
+		<Footer />
 	</body>
 </html>
