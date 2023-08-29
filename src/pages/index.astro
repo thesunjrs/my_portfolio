@@ -1,13 +1,12 @@
 ---
 import "../styles/global.css";
-import Navigation from "../components/Navigation.astro"
-const pageTitle = "Home"
+import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+
+const pageTitle = "Home"
 ---
 
-<html lang="en">
-	
-		<Navigation />
+<html lang="en">		
 <head>
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -16,8 +15,42 @@ import Footer from "../components/Footer.astro";
 		<title>{pageTitle}</title>
 	</head>
 	<body>
+		<Header />
 	<h1>{pageTitle}</h1>
 	
 		<Footer />
+		<script>
+			import "../scripts/menu.js";
+			
+		  </script>
 	</body>
 </html>
+<!-- Those commands are all executed at build time to create static HTML for your site, and then the code is “thrown away.”
+
+The JavaScript in a <script> tag is sent to the browser, and is available to run, based on user interactions like refreshing a page or toggling an input. -->
+
+<!-- The <script> tag is a great place to import JavaScript modules, like the menu.js file we created earlier. -->
+
+<!-- The <script> tag is also a great place to import CSS modules, like the global.css file we created earlier. -->
+
+
+
+<!-- Client-side interactivity inside a script tag refers to the ability to add interactivity to a web page using JavaScript code that is embedded in the page's HTML. This code is executed by the user's web browser, not by the web server.
+
+There are many ways to add client-side interactivity to a web page, such as:
+
+Adding event listeners to elements on the page, such as buttons or links, so that they can respond to user events, such as clicks or hovers.
+Creating animations using JavaScript's built-in animation functions or third-party libraries.
+Validating user input before it is submitted to the server.
+Making AJAX requests to the server to fetch data or update the page dynamically.
+The benefits of using client-side interactivity include:
+
+Increased responsiveness: The user can interact with the page without having to wait for the server to respond.
+Improved user experience: The page can be more interactive and engaging, which can improve user satisfaction.
+Reduced load times: The JavaScript code is executed by the user's web browser, which can reduce the amount of data that needs to be transferred from the server.
+However, there are also some drawbacks to using client-side interactivity:
+
+Security risks: If the JavaScript code is not secure, it could be used to steal user data or inject malicious code into the page.
+Browser compatibility: The JavaScript code needs to be compatible with all major web browsers.
+Performance: If the JavaScript code is not optimized, it can slow down the page's performance.
+Overall, client-side interactivity is a powerful tool that can be used to add interactivity and engagement to web pages. However, it is important to use it carefully to avoid security risks and performance problems. -->
