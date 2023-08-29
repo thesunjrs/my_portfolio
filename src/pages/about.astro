@@ -1,9 +1,6 @@
 ---
-import "../styles/global.css";
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
-
-const pageTitle = "About Me"
+import BaseLayout from '../layouts/BaseLayout.astro';
+const pageTitle = "About Me";
 
 const identity = {
   firstName: "Aditya Jyotiraditya Sahoo",
@@ -12,7 +9,7 @@ const identity = {
   hobbies: ["football", "chess", "standup comedy", "writing"],
 };
 
-const skills = ["HTML", "CSS", "JavaScript", "React", "Astro", "Writing Docs"];
+const skills = ["HTML", "CSS", "JavaScript", "Astro", "Writing Docs"];
 
 const happy = true;
 const finished = false;
@@ -28,34 +25,11 @@ const textCase = "uppercase"
   If you want a style to be applied site-wide, you would choose to use a global.css file. However, if you want styles to apply to only the HTML content in a single .astro file, and not affect other elements on your site, you would choose a <style> tag. -->
 
 
-<html>
-
-<head>
-  <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    
-  <title>{pageTitle}</title>
-
-  <style define:vars={{skillColor, fontWeight, textCase}}>
-    h1 {
-      color: purple;
-      font-size: 4rem;
-      text-transform: var(--textCase);
-    }
-    .skill {
-    color: var(--skillColor);
-    font-weight: var(--fontWeight);
-  }
-  </style>
-
-</head>
-    <body>
-
-    <Header />
-    <h1>{pageTitle}</h1>
-    <h2>....and my new Astro Site</h2>
-
-    <p>Here are a few facts about me:</p>
+    <BaseLayout pageTitle={pageTitle}>
+      <p></p>
+      <html>
+        <body>
+          <p>Here are a few facts about me:</p>
     <ul>
       <li>My name is {identity.firstName}.</li>
       <li>I live in {identity.country} and I work as a {identity.occupation}.</li>
@@ -73,19 +47,13 @@ const textCase = "uppercase"
   
   {finished && <p>I finished this tutorial!</p>}
   
-  {goal === 3 ? <p>My goal is to finish in 3 days.</p> : <p>My goal is not 3 days.</p>}
+  {goal === 3 ? <p>My goal is to finish in N days.</p> : <p>My goal is not 3 days.</p>}
 
-
-    <p>I am working through Astro's introductory tutorial. This is the second page on my website, and it's the first one I built myself!</p>
-
-  <p>This site will update as I complete more of the tutorial, so keep checking back and see how my journey is going!</p>
 
     <p></p>
-    
-  <Footer />
 
-  <script>
-    import "../scripts/menu.js";
-  </script>
-  </body>
-</html>
+  <p>This site will be updated daily, so keep checking back and see how my journey is going!</p>
+        </body>
+      </html>
+
+    </BaseLayout>
