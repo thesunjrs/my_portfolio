@@ -5,25 +5,26 @@ import BlogPost from '../../components/BlogPost.astro';
 export async function getStaticPaths() {
     const allPosts = await Astro.glob('../posts/*.md');
 
+    const uniqueTags = [...new Set(allPosts.map((post) => post.frontmatter.tags).flat())];
 
-  return [
-  {params: {tag: "astro"}, props: {posts: allPosts}},
-    {params: {tag: "successes"}, props: {posts: allPosts}},
-    {params: {tag: "community"}, props: {posts: allPosts}},
-    {params: {tag: "blogging"}, props: {posts: allPosts}},
-    {params: {tag: "setbacks"}, props: {posts: allPosts}},
-    {params: {tag: "learning in public"}, props: {posts: allPosts}}
-  ];
+
+    return uniqueTags.map((tag) => {
+    const filteredPosts = allPosts.filter((post) => post.frontmatter.tags.includes(tag));
+    return {
+      params: { tag },
+      props: { posts: filteredPosts },
+    };
+  });
 }
 
 const { tag } = Astro.params;
 const { posts } = Astro.props;
-const filteredPosts = posts.filter((post) => post.frontmatter.tags?.includes(tag));
+
 ---
 <BaseLayout pageTitle={tag}>
   <p>Posts tagged with {tag}</p>
   <ul>
-    {filteredPosts.map((post) => <BlogPost url={post.url} title={post.frontmatter.title}/>)}
+    {posts.map((post) => <BlogPost url={post.url} title={post.frontmatter.title}/>)}
   </ul>
 </BaseLayout>
 
@@ -32,3 +33,16 @@ const filteredPosts = posts.filter((post) => post.frontmatter.tags?.includes(tag
 <!--If you need information to construct the page routes, write it inside getStaticPaths().
 
 To receive information in the HTML template of a page route, write it outside getStaticPaths(). -->
+
+
+<!--The getStaticPaths function is used to define a list of paths that will be pre-rendered at build time. This can be useful for pages that have dynamic routes, such as pages that are filtered by a certain criteria.
+
+In the code you shared, the getStaticPaths function first gets a list of all the unique tags used in the blog posts. Then, it generates a list of objects, each of which contains a path and a prop. The path is the URL of the page, and the prop is the name of the tag.
+
+The getStaticPaths function then returns this list of objects. This tells Next.js to pre-render a page for each path in the list.
+
+The next part of the code filters the list of blog posts before it is passed to the pages as props. This is done to improve performance, as only the posts that match the current tag will be rendered on the page.
+
+Finally, the HTML template is updated to use the posts prop instead of the filteredPosts prop. This ensures that the correct list of posts is displayed on the page.
+
+In simple terms, the getStaticPaths function is used to pre-render pages that have dynamic routes. The code you shared uses this function to pre-render pages that are filtered by a certain tag. The list of posts is also filtered before it is passed to the pages as props to improve performance. -->
